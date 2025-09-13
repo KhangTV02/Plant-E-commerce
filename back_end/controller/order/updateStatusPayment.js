@@ -32,7 +32,7 @@ const updateStatusPayment = async (req, res) => {
       order,
     });
   } catch (err) {
-    console.error("❌ Lỗi cập nhật trạng thái thanh toán:", err);
+    console.error("Lỗi cập nhật trạng thái thanh toán:", err);
     res
       .status(500)
       .json({ success: false, message: "Lỗi máy chủ khi cập nhật thanh toán!" });

@@ -150,7 +150,7 @@ const AdminDashboard = () => {
             </p>
           </div>
 
-          {/* 📌 Thống kê doanh thu */}
+          {/* Thống kê doanh thu */}
           <div className="border p-2 rounded-lg shadow bg-white">
             <h3 className="text-2xl font-bold"> Thống kê doanh thu</h3>
             <p className="text-lg p-2">

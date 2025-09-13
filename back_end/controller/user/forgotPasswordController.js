@@ -20,24 +20,24 @@ const forgotPassword = async (req, res) => {
       return res.status(404).json({ success: false, message: "Email không tồn tại trong hệ thống!" });
     }
 
-    // 🔹 Tạo JWT token cho đặt lại mật khẩu (hết hạn sau 1 giờ)
+    // Tạo JWT token cho đặt lại mật khẩu (hết hạn sau 1 giờ)
     const resetToken = jwt.sign(
       { email: user.email, _id: user._id },
       process.env.TOKEN_SECRET_KEY,
       { expiresIn: "1h" } // Token hết hạn sau 1 giờ
     );
 
-    // 🔹 Lưu token vào database
+    // Lưu token vào database
     user.resetPasswordToken = resetToken;
     user.resetPasswordExpires = Date.now() + 3600000; // 1 giờ
     await user.save(); 
 
     console.log("✅ Token đã lưu vào user:", resetToken);
 
-    // 🔹 Tạo link đặt lại mật khẩu
+    // Tạo link đặt lại mật khẩu
     const resetLink = `http://localhost:3000/reset-password/${resetToken}`;
 
-    // 🔹 Gửi email
+    // Gửi email
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: email,
@@ -52,7 +52,7 @@ const forgotPassword = async (req, res) => {
 
     res.json({ success: true, message: "Email đặt lại mật khẩu đã được gửi!" });
   } catch (error) {
-    console.error("❌ Lỗi quên mật khẩu:", error);
+    console.error("Lỗi quên mật khẩu:", error);
     res.status(500).json({ success: false, message: "Lỗi máy chủ!" });
   }
 };

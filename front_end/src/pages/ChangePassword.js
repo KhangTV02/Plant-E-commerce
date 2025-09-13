@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import SummaryApi from "../common";
-import { FaEye, FaEyeSlash } from "react-icons/fa"; // 🛠 Import icon mắt
+import { FaEye, FaEyeSlash } from "react-icons/fa"; // Import icon mắt
 
 const ChangePassword = () => {
   const [formData, setFormData] = useState({
@@ -13,14 +13,14 @@ const ChangePassword = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   
-  // ✅ State để bật/tắt xem mật khẩu
+  // State để bật/tắt xem mật khẩu
   const [showPassword, setShowPassword] = useState({
     old: false,
     new: false,
     confirm: false
   });
 
-  // ✅ Toggle hiển thị mật khẩu
+  // Toggle hiển thị mật khẩu
   const togglePassword = (field) => {
     setShowPassword((prev) => ({ ...prev, [field]: !prev[field] }));
   };
@@ -72,7 +72,7 @@ const ChangePassword = () => {
       <h2 className="text-xl font-bold text-center mb-4">🔑 Đổi mật khẩu</h2>
       <form onSubmit={handleSubmit}>
         
-        {/* 🛠 Mật khẩu cũ */}
+        {/* Mật khẩu cũ */}
         <div className="mb-3 relative">
           <label className="block text-sm font-medium">Mật khẩu cũ</label>
           <input
@@ -92,7 +92,7 @@ const ChangePassword = () => {
           </span>
         </div>
 
-        {/* 🛠 Mật khẩu mới */}
+        {/* Mật khẩu mới */}
         <div className="mb-3 relative">
           <label className="block text-sm font-medium">Mật khẩu mới</label>
           <input
@@ -112,7 +112,7 @@ const ChangePassword = () => {
           </span>
         </div>
 
-        {/* 🛠 Xác nhận mật khẩu */}
+        {/* Xác nhận mật khẩu */}
         <div className="mb-3 relative">
           <label className="block text-sm font-medium">Xác nhận mật khẩu</label>
           <input

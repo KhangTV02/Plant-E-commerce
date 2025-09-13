@@ -11,7 +11,7 @@ const ViewOrders = () => {
     fetchUserOrders();
   }, []);
 
-  // 📌 Gọi API để lấy danh sách đơn hàng của người dùng
+  // Gọi API để lấy danh sách đơn hàng của người dùng
   const fetchUserOrders = async () => {
     setLoading(true);
     try {

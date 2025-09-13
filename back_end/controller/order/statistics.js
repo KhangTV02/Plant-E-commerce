@@ -3,7 +3,7 @@ const orderModel = require("../../models/orderModel");
 // API lấy thống kê đơn hàng
 const getOrderStatistics = async (req, res) => {
   try {
-    // 📌 Đếm số lượng đơn hàng theo trạng thái
+    // Đếm số lượng đơn hàng theo trạng thái
     const totalOrder = await orderModel.countDocuments({});
     const completedOrders = await orderModel.countDocuments({
       status: "Đã giao"
@@ -15,7 +15,7 @@ const getOrderStatistics = async (req, res) => {
       status: "Hủy đơn hàng"
     });
 
-    // 📌 Tính giá trị trung bình của mỗi đơn hàng
+    // Tính giá trị trung bình của mỗi đơn hàng
     const allOrders = await orderModel.find({});
     const totalRevenue = allOrders.reduce(
       (sum, order) => sum + order.totalPrice,
@@ -24,7 +24,7 @@ const getOrderStatistics = async (req, res) => {
     let avgValue = totalOrder > 0 ? totalRevenue / totalOrder : 0;
     avgValue = Math.round(avgValue / 1000) * 1000; // 🔥 Làm tròn theo phần nghìn
 
-    // 📌 Tính tỷ lệ đơn hàng thành công
+    // Tính tỷ lệ đơn hàng thành công
     const successRate =
       totalOrder > 0 ? ((completedOrders / totalOrder) * 100).toFixed(2) : 0;
 

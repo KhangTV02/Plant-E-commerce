@@ -11,7 +11,7 @@ const ManageOrders = () => {
     fetchOrders();
   }, [timeRange]);
 
-  // 📌 Lấy danh sách đơn hàng từ server
+  // Lấy danh sách đơn hàng từ server
   const fetchOrders = async () => {
     setLoading(true);
     try {
@@ -40,7 +40,7 @@ const ManageOrders = () => {
     setLoading(false);
   };
 
-  // 📌 Xử lý khi chọn trạng thái mới
+  // Xử lý khi chọn trạng thái mới
   const handleStatusChange = async (orderId, newStatus) => {
     if (!newStatus) {
       toast.error("Vui lòng chọn trạng thái trước khi xác nhận.");
@@ -64,7 +64,7 @@ const ManageOrders = () => {
       if (responseData.success) {
         toast.success(`Trạng thái đơn hàng đã cập nhật thành "${newStatus}"!`);
 
-        // ✅ Cập nhật trạng thái ngay trên UI mà không cần reload
+        // Cập nhật trạng thái ngay trên UI mà không cần reload
         setOrders((prevOrders) =>
           prevOrders.map((order) =>
             order._id === orderId ? { ...order, status: newStatus } : order
@@ -103,7 +103,7 @@ const ManageOrders = () => {
           `Trạng thái thanh toán cập nhật thành "${newPaymentStatus}"!`
         );
 
-        // ✅ Cập nhật UI mà không cần reload
+        // Cập nhật UI mà không cần reload
         setOrders((prevOrders) =>
           prevOrders.map((order) =>
             order._id === orderId
@@ -119,12 +119,12 @@ const ManageOrders = () => {
     }
   };
   
-  // 📌 Hàm format mã đơn hàng đẹp hơn
+  // Hàm format mã đơn hàng đẹp hơn
   const formatOrderId = (orderId) => {
     return `${orderId.slice(-6).toUpperCase()}`;
   };
 
-  // 📌 Chuyển định dạng thời gian
+  // Chuyển định dạng thời gian
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return date.toLocaleString("vi-VN", {
